@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #ffffff;
+  --surface: #fafaf8;
+  --ink: #1a1a18;
+  --muted: #8a8a82;
+  --line: #ecece8;
+  --accent: #3d5a4c;
+  --over: #b5543b;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 16px inputs prevent iOS zoom-on-focus */
+input,
+select,
+textarea,
+button {
+  font-size: 16px;
+}
+
+@layer components {
+  .card {
+    @apply bg-surface border border-line rounded-card;
+  }
+  .label {
+    @apply text-[11px] uppercase tracking-[0.12em] text-muted font-medium;
+  }
+  .stat {
+    @apply font-display font-medium text-ink;
+    font-variant-numeric: tabular-nums;
+  }
+  .chip {
+    @apply px-3 py-2 rounded-full border border-line bg-bg text-sm text-ink transition-colors duration-150;
+  }
+  .chip-active {
+    @apply bg-accent text-white border-accent;
+  }
+  .btn-primary {
+    @apply w-full py-3.5 rounded-card bg-accent text-white font-medium transition-opacity duration-150 disabled:opacity-40;
+  }
+  .btn-ghost {
+    @apply w-full py-3 rounded-card border border-line text-ink font-medium bg-bg;
+  }
+  .field {
+    @apply w-full rounded-xl border border-line bg-bg px-3.5 py-3 text-ink placeholder:text-muted focus:outline-none focus:border-accent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
